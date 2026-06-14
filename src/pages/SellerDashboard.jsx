@@ -70,11 +70,12 @@ const INITIAL_LOGS = [
 ]
 
 export default function SellerDashboard({ user }) {
+  const isDemo = user?.email === 'demo@digimartx.com'
   const [currentTab, setCurrentTab] = useState('home')
-  const [channels, setChannels] = useState(INITIAL_CHANNELS)
-  const [catalog, setCatalog] = useState(INITIAL_CATALOG)
-  const [orders, setOrders] = useState(INITIAL_ORDERS)
-  const [systemLogs, setSystemLogs] = useState(INITIAL_LOGS)
+  const [channels, setChannels] = useState(isDemo ? INITIAL_CHANNELS : [])
+  const [catalog, setCatalog] = useState(isDemo ? INITIAL_CATALOG : [])
+  const [orders, setOrders] = useState(isDemo ? INITIAL_ORDERS : [])
+  const [systemLogs, setSystemLogs] = useState(isDemo ? INITIAL_LOGS : [])
   const [searchQuery, setSearchQuery] = useState('')
   const [expandedSku, setExpandedSku] = useState(null)
   const [isAddSkuOpen, setIsAddSkuOpen] = useState(false)
